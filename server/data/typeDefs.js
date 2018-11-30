@@ -158,6 +158,7 @@ const typeDefs = gql`
   type VoteRecord {
     id: ID
     amount: Int
+    project: String
     pollID: Int
     revealed: Boolean
     rescued: Boolean
