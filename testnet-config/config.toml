@@ -4,7 +4,10 @@ base_path = "/tmp/parity0"
 [network]
 port = 30300
 [rpc]
+hosts = ["all"]
+cors = ["*"]
+interface = "all"
 port = 8540
-apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
+apis = ["web3", "eth", "net"]
 [websockets]
 port = 8450
