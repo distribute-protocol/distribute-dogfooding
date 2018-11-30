@@ -32,7 +32,6 @@
     "ethers": "^4.0.7",
     "ethjs": "^0.4.0",
     "express": "^4.16.4",
-    "get-eth-price": "^1.0.0",
     "graphql": "^14.0.2",
     "graphql-tools": "^4.0.2",
     "ipfs-api": "^25.0.0",

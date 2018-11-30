@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { getEthPriceNow } from 'get-eth-price'
+import price from 'crypto-price'
 import { eth, web3, dt } from '../utilities/blockchain'
 import StatusComponent from '../components/Status'
 import { getNetworkStatus } from '../actions/networkActions'
@@ -41,12 +41,11 @@ class Status extends React.Component {
   }
 
   async getPriceData () {
-    let ethPrice = await getEthPriceNow()
-    ethPrice = ethPrice[Object.keys(ethPrice)].ETH.USD
+    let ethPrice = await price.getCryptoPrice('USD', 'ETH')
     let weiBal = (await dt.weiBal()).toNumber()
     let currentPrice = (await dt.currentPrice()).toNumber()
     this.setState({
-      ethPrice,
+      ethPrice: ethPrice.price,
       weiBal,
       currentPrice: web3.fromWei(currentPrice, 'ether')
     })
