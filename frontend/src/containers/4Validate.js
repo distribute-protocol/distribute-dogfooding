@@ -5,7 +5,7 @@ import Project from './project/4Validate'
 import fastforward from '../utilities/fastforward'
 import { connect } from 'react-redux'
 import { eth } from '../utilities/blockchain'
-import { getEthPriceNow } from 'get-eth-price'
+import price from 'crypto-price'
 import { getProjects } from '../actions/projectActions'
 import gql from 'graphql-tag'
 
@@ -72,10 +72,9 @@ class Validate extends React.Component {
   }
 
   async setEthPrice () {
-    let ethPrice = await getEthPriceNow()
-    ethPrice = ethPrice[Object.keys(ethPrice)].ETH.USD
+    let ethPrice = await price.getCryptoPrice('USD', 'ETH')
     this.setState({
-      ethPrice
+      ethPrice: ethPrice.price
     })
   }
 
