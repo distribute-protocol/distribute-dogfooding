@@ -1,5 +1,5 @@
 [parity]
-chain = "home/dogfooding/poaChainSpec.json"
+chain = "home/dogfooding/testnet-config/poaChainSpec.json"
 base_path = "/tmp/parity0"
 [network]
 port = 30300
