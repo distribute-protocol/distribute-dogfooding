@@ -36,7 +36,7 @@ const typeDefs = gql`
     id: ID
     ipfsHash: String
     listSubmitted: Boolean
-    location: Location
+    location: [Float]
     name: String
     nextDeadline: String
     passThreshold: Int
@@ -70,11 +70,6 @@ const typeDefs = gql`
     submitter: String
     weighting: String
     content: String
-  }
-
-  type Location{
-    lat: Float
-    lng: Float
   }
 
   type Reputation {
