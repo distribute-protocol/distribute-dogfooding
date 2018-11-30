@@ -12,6 +12,7 @@
     "dragula": "^3.7.2",
     "ethereumjs-abi": "^0.6.5",
     "ethers": "^4.0.4",
+    "ethjs": "^0.4.0",
     "get-eth-price": "^1.0.0",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
@@ -46,7 +47,6 @@
     "truffle-contract": "^3.0.6",
     "truffle-hdwallet-provider": "0.0.6",
     "uport-connect": "^1.0.0-beta.1",
-    "web3": "^1.0.0-beta.36",
     "web3-utils": "^1.0.0-beta.36",
     "webcrypto": "^0.1.1"
   },

@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { eth, web3 } from '../utilities/blockchain'
 import uport from '../utilities/uport'
 import { Button } from 'antd'
 import { loginUser } from '../actions/userActions'
@@ -8,17 +9,53 @@ import { getNetworkStatus } from '../actions/networkActions'
 class Landing extends React.Component {
   constructor () {
     super()
+    this.state = {
+      metamask: false
+    }
     this.getUport = this.getUport.bind(this)
+    this.checkMetamaskConnected = this.checkMetamaskConnected.bind(this)
+    this.checkMetamask = this.checkMetamask.bind(this)
   }
-  getUport () {
-    uport.requestCredentials({
-      requested: ['name', 'avatar'],
-      notifications: true
-    }).then((credentials) => {
-      this.props.getNetworkStatus()
-      this.props.loginUser(credentials)
+
+  componentWillMount () {
+    this.checkMetamaskConnected()
+  }
+
+  checkMetamaskConnected () {
+    if (!this.state.metamask && window.ethereum._metamask.isEnabled()) {
+      this.checkMetamask()
+    } else if (!window.ethereum._metamask.isEnabled()) {
+      window.ethereum.enable()
+    }
+    setTimeout(() => {
+      this.checkMetamaskConnected()
+    }, 1000)
+  }
+
+  checkMetamask () {
+    eth.getAccounts(async (err, accounts) => {
+      if (!err) {
+        this.setState({metamask: accounts.length})
+      }
     })
   }
+
+  getUport () {
+    if (this.state.metamask) {
+      const reqObj = {
+        requested: ['name', 'avatar', 'country'],
+        notifications: true
+      } 
+      uport.requestDisclosure(reqObj)
+      uport.onResponse('disclosureReq').then(res => { 
+        this.props.getNetworkStatus()
+        this.props.loginUser(res.payload)
+      })
+    } else {
+      alert('please consent to metamask')
+    }
+  }
+
   render () {
     return (
       <div style={{padding: 30}}>
@@ -26,11 +63,11 @@ class Landing extends React.Component {
         <hr className='my-2' />
         <p>You need a uPort to continue. You can download the mobile app with one of the links below.</p>
         <p>Upon login, you will be prompted to receive your first reputation points.</p>
-        <text>
+        <span>
           <a href='https://itunes.apple.com/us/app/uport-identity-wallet-ethereum/id1123434510?mt=8'>uPort iOS</a>
-          <text> | </text>
+          <span> | </span>
           <a href='https://play.google.com/store/apps/details?id=com.uportMobile'>uPort Android</a>
-        </text>
+        </span>
 
         <p className='lead' style={{marginTop: 30, alignItems: 'center'}}>
           <Button color='primary' onClick={this.getUport}>
