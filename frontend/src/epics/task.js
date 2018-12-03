@@ -224,7 +224,7 @@ const commitVoteEpic = action$ => {
     mergeMap(action => {
       projectAddress = action.projectAddress
       taskIndex = action.taskIndex
-      value = action.value
+      value = parseInt(action.value)
       secretHash = action.secretHash
       pollID = action.pollID
       txObj = action.txObj
@@ -260,7 +260,7 @@ const commitVoteEpic = action$ => {
           amount: value,
           vote: vote,
           salt: salt,
-          pollID: pollID,
+          pollID: parseInt(pollID),
           voter: txObj.from,
           type: type
         }
