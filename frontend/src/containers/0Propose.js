@@ -69,7 +69,6 @@ class Propose extends React.Component {
   }
 
   async getContractValues () {
-    console.log('goob')
     let currPrice = (await dt.currentPrice()).toNumber()
     let weiBal = (await dt.weiBal()).toNumber()
     this.setState({
@@ -163,7 +162,6 @@ class Propose extends React.Component {
   }
 
   render () {
-    console.log(this.state)
     return (
       <div>
         <Sidebar />

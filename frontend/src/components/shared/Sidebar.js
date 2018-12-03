@@ -30,7 +30,6 @@ class Sidebar extends React.Component {
     this.setState({[val]: !this.state[val]})
   }
   render () {
-    console.log(this.props.user)
     return (
       <div style={{height: '100vh', width: 200, backgroundColor: '#111111', position: 'fixed', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <h1 className='App-title' style={{color: 'white', marginTop: 15}}>distribute</h1>

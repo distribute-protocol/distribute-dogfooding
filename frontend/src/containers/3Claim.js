@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Button } from 'antd'
+// import { Button } from 'antd'
 import Sidebar from '../components/shared/Sidebar'
 import { eth } from '../utilities/blockchain'
 import price from 'crypto-price'

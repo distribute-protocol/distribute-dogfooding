@@ -22,13 +22,17 @@ class StakeProject extends React.Component {
   }
 
   render () {
-    let tokensLeft, currentPrice
+    let tokensLeft, currentPrice, nextDeadline
     if (typeof this.props.project !== `undefined`) {
       let weiCost = new BigNumber(this.props.project.weiCost.toString())
       let weiBal = new BigNumber(this.props.project.weiBal.toString())
-      this.props.project.currentPrice !== `undefined`
+      typeof this.props.project.currentPrice === `undefined`
         ? currentPrice = this.props.currentPrice
         : currentPrice = this.props.project.currentPrice
+      if (typeof this.props.project.nextDeadline !== `undefined`) {
+        nextDeadline = new Date(parseInt(this.props.project.nextDeadline))
+      }
+
       tokensLeft = Math.ceil((weiCost).minus(weiBal).div(currentPrice))
     } else {
       tokensLeft = 'calculating...'
@@ -44,7 +48,7 @@ class StakeProject extends React.Component {
         tokensLeft={tokensLeft}
         reputationCost={this.props.project.reputationCost}
         totalReputationStaked={this.props.project.reputationBalance}
-        date={moment(this.props.project.nextDeadline)}
+        date={nextDeadline.toLocaleString()}
         stakeInput={
           <input
             ref={(input) => (this.stakedValue = input)}
