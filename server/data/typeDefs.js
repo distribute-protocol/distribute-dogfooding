@@ -43,6 +43,7 @@ const typeDefs = gql`
     photo: String
     proposer: User
     proposerType: Int
+    proposerRewarded: Boolean
     reputationBalance: Int
     reputationCost: Int
     stakedStatePeriod: Int
@@ -157,6 +158,7 @@ const typeDefs = gql`
   type VoteRecord {
     id: ID
     amount: Int
+    project: String
     pollID: Int
     revealed: Boolean
     rescued: Boolean
