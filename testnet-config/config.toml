@@ -4,7 +4,7 @@ base_path = "/tmp/parity0"
 [network]
 port = 30300
 [account]
-password = ["node.pwds"]
+password = ["/home/node.pwds"]
 [rpc]
 hosts = ["all"]
 cors = ["*"]
