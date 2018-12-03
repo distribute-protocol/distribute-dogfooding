@@ -5,7 +5,9 @@
             "params": {
                 "stepDuration": "5",
                 "validators" : {
-                    "list": []
+                    "list": [
+                        "0x065230fa7ceaacc41879e8c4a8c854dde13eeca4"
+                    ]
                 }
             }
         }

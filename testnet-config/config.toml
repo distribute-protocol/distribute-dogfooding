@@ -3,6 +3,8 @@ chain = "home/dogfooding/testnet-config/poaChainSpec.json"
 base_path = "/tmp/parity0"
 [network]
 port = 30300
+[account]
+password = ["node.pwds"]
 [rpc]
 hosts = ["all"]
 cors = ["*"]
@@ -11,3 +13,6 @@ port = 8540
 apis = ["web3", "eth", "net"]
 [websockets]
 port = 8450
+[mining]
+engine_signer = "0x065230fa7ceaacc41879e8c4a8c854dde13eeca4"
+reseal_on_txs = "none"
