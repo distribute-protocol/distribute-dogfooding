@@ -51,7 +51,7 @@ export default ({
       <div style={{padding: 10}}>
         <div>
           <div>
-            Voting Period Expires In {typeof date !== 'undefined' ? `${date.fromNow()}` : 'N/A'}
+            Voting Period Expires In {typeof date !== 'undefined' ? `${date}` : 'N/A'}
           </div>
         </div>
         <div style={{display: 'flex', flexDirection: 'column', backgroundColor: '#FCFCFC', marginTop: 30}}>

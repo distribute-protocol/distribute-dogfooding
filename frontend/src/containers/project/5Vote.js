@@ -2,13 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import VoteComponent from '../../components/project/5Vote'
 import { Icon } from 'antd'
-import { eth, web3 } from '../../utilities/blockchain'
+import { eth, web3, P } from '../../utilities/blockchain'
 import { getUserValidations } from '../../actions/taskActions'
 import ButtonRewardValidator from '../../contractComponents/stage5/RewardValidator'
 import ButtonRewardTask from '../../contractComponents/stage5/RewardTask'
 import ButtonCommitVote from '../../contractComponents/stage5/CommitVote'
 import ButtonRevealVote from '../../contractComponents/stage5/RevealVote'
-import moment from 'moment'
 import * as _ from 'lodash'
 
 class VoteTasks extends React.Component {
@@ -16,12 +15,14 @@ class VoteTasks extends React.Component {
     super()
     this.state = {
       tasks: [],
-      votes: {}
+      votes: {},
+      nextDeadline: ''
     }
   }
 
   componentWillMount () {
     this.getUserValidations()
+    this.getNextDeadline()
   }
 
   async getUserValidations () {
@@ -30,6 +31,11 @@ class VoteTasks extends React.Component {
         this.props.getUserValidations(this.props.address, accounts[0], 5)
       }
     })
+  }
+
+  async getNextDeadline () {
+    let nextDeadline = await P.at(this.props.address).nextDeadline() * 1000
+    this.setState({nextDeadline: new Date(parseInt(nextDeadline))})
   }
 
   onChange (e) {
@@ -228,7 +234,7 @@ class VoteTasks extends React.Component {
         location={this.props.project.location}
         cost={web3.fromWei(Math.ceil(this.props.project.weiCost / 1.05), 'ether')}
         reputationCost={this.props.project.reputationCost}
-        date={moment(this.props.project.nextDeadline)}
+        date={this.state.nextDeadline}
         tasks={tasks}
         user={this.props.user}
       />

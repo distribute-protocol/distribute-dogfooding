@@ -4,16 +4,25 @@ import ClaimComponent from '../../components/project/3Claim'
 import ButtonClaimTask from '../../contractComponents/stage3/ClaimTask'
 import ButtonTaskComplete from '../../contractComponents/stage3/TaskComplete'
 import { Button } from 'antd'
-import { web3 } from '../../utilities/blockchain'
-import moment from 'moment'
+import { web3, P } from '../../utilities/blockchain'
 const ButtonGroup = Button.Group
 
 class ClaimProject extends React.Component {
   constructor () {
     super()
     this.state = {
-      tasks: []
+      tasks: [],
+      nextDeadline: ''
     }
+  }
+
+  componentWillMount () {
+    this.getNextDeadline()
+  }
+
+  async getNextDeadline () {
+    let nextDeadline = await P.at(this.props.address).nextDeadline() * 1000
+    this.setState({nextDeadline: new Date(parseInt(nextDeadline))})
   }
 
   render () {
@@ -57,7 +66,7 @@ class ClaimProject extends React.Component {
         location={this.props.project.location}
         cost={web3.fromWei(Math.ceil(this.props.project.weiCost / 1.05), 'ether')}
         reputationCost={this.props.project.reputationCost}
-        date={moment(this.props.project.nextDeadline)}
+        date={this.state.nextDeadline}
         tasks={tasks}
       />
     )

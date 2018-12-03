@@ -2,9 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'antd'
 import AddComponent from '../../components/project/2Add'
-import {web3} from '../../utilities/blockchain'
+import { web3, P } from '../../utilities/blockchain'
 import update from 'immutability-helper'
-import moment from 'moment'
 import { setTaskList, getVerifiedTaskLists } from '../../actions/projectActions'
 
 class AddProject extends React.Component {
@@ -12,7 +11,8 @@ class AddProject extends React.Component {
     super()
     this.state = {
       tempTask: {},
-      taskList: []
+      taskList: [],
+      nextDeadline: ''
     }
     this.handleTaskInput = this.handleTaskInput.bind(this)
     this.moveRow = this.moveRow.bind(this)
@@ -20,6 +20,7 @@ class AddProject extends React.Component {
 
   componentWillMount () {
     this.props.getVerifiedTaskLists(this.props.address)
+    this.getNextDeadline()
   }
 
   componentWillReceiveProps (np) {
@@ -66,6 +67,11 @@ class AddProject extends React.Component {
     tempTaskList.push({description, percentage})
     this.props.setTaskList({taskList: tempTaskList}, this.props.address)
     this.setState({tempTask: {}})
+  }
+
+  async getNextDeadline () {
+    let nextDeadline = await P.at(this.props.address).nextDeadline() * 1000
+    this.setState({nextDeadline: new Date(parseInt(nextDeadline))})
   }
 
   render () {
@@ -124,7 +130,7 @@ class AddProject extends React.Component {
         location={this.props.project.location}
         cost={web3.fromWei(Math.ceil(this.props.project.weiCost / 1.05), 'ether')}
         reputationCost={this.props.project.reputationCost}
-        date={moment(this.props.project.nextDeadline)}
+        date={this.state.nextDeadline}
         tasks={tasks}
         submission={submission}
         submissionTasks={verifiedSubmissions}

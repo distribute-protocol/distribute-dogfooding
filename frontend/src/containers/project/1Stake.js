@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import StakeComponent from '../../components/project/1Stake'
-import moment from 'moment'
 import { web3 } from '../../utilities/blockchain'
 import { BigNumber } from 'bignumber.js'
 
@@ -29,10 +28,9 @@ class StakeProject extends React.Component {
       typeof this.props.project.currentPrice === `undefined`
         ? currentPrice = this.props.currentPrice
         : currentPrice = this.props.project.currentPrice
-      if (typeof this.props.project.nextDeadline !== `undefined`) {
-        nextDeadline = new Date(parseInt(this.props.project.nextDeadline))
-      }
-
+      typeof this.props.project.nextDeadline !== `undefined`
+        ? nextDeadline = new Date(parseInt(this.props.project.nextDeadline))
+        : nextDeadline = 'calculating...'
       tokensLeft = Math.ceil((weiCost).minus(weiBal).div(currentPrice))
     } else {
       tokensLeft = 'calculating...'

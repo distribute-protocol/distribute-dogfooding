@@ -5,21 +5,22 @@ import { getUserValidations } from '../../actions/taskActions'
 import ButtonRewardValidator from '../../contractComponents/stage5/RewardValidator'
 import ButtonRewardTask from '../../contractComponents/stage5/RewardTask'
 import ButtonRescueVote from '../../contractComponents/stage5/RescueVote'
-import { web3, eth } from '../../utilities/blockchain'
+import { web3, eth, P } from '../../utilities/blockchain'
 import { Icon } from 'antd'
-import moment from 'moment'
 import * as _ from 'lodash'
 
 class FinishedProject extends React.Component {
   constructor () {
     super()
     this.state = {
-      tasks: []
+      tasks: [],
+      nextDeadline: ''
     }
   }
 
   componentWillMount () {
     this.getUserValidations()
+    this.getNextDeadline()
   }
 
   async getUserValidations () {
@@ -28,6 +29,11 @@ class FinishedProject extends React.Component {
         this.props.getUserValidations(this.props.address, accounts[0], this.props.state)
       }
     })
+  }
+
+  async getNextDeadline () {
+    let nextDeadline = await P.at(this.props.address).nextDeadline() * 1000
+    this.setState({nextDeadline: new Date(parseInt(nextDeadline))})
   }
 
   render () {
@@ -102,7 +108,7 @@ class FinishedProject extends React.Component {
         location={this.props.project.location}
         cost={web3.fromWei(this.props.project.cost, 'ether')}
         reputationCost={this.props.project.reputationCost}
-        date={moment(this.props.project.nextDeadline * 1000)}
+        date={this.state.nextDeadline}
         user={this.props.user}
         tasks={tasks}
       />

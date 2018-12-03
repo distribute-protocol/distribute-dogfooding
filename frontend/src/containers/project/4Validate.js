@@ -4,12 +4,27 @@ import { Icon } from 'antd'
 import ValidateComponent from '../../components/project/4Validate'
 import ValidateTask from '../task/4Validate'
 import ButtonValidateTask from '../../contractComponents/stage4/ValidateTask'
-import { web3 } from '../../utilities/blockchain'
-import moment from 'moment'
+import { web3, P } from '../../utilities/blockchain'
 
 class ValidateTasks extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      nextDeadline: ''
+    }
+  }
+
   onChange (e) {
     this.setState({[e.target.name]: e.target.value})
+  }
+
+  componentWillMount () {
+    this.getNextDeadline()
+  }
+
+  async getNextDeadline () {
+    let nextDeadline = await P.at(this.props.address).nextDeadline() * 1000
+    this.setState({nextDeadline: new Date(parseInt(nextDeadline))})
   }
 
   render () {
@@ -74,7 +89,7 @@ class ValidateTasks extends React.Component {
         location={this.props.project.location}
         cost={web3.fromWei(Math.ceil(this.props.project.weiCost / 1.05), 'ether')}
         reputationCost={this.props.project.reputationCost}
-        date={moment(this.props.project.nextDeadline)}
+        date={this.state.nextDeadline}
         tasks={tasks}
         user={this.props.user}
       />
