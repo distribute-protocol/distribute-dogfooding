@@ -106,9 +106,9 @@ class Claim extends React.Component {
         <div style={{marginLeft: 200, marginBottom: 30}}>
           <header className='App-header'>
             <h3>Claim Tasks from Active Projects</h3>
-            <Button type='danger' onClick={this.fastForward}>fast forward 2 weeks</Button>
+            { /* <Button type='danger' onClick={this.fastForward}>fast forward 2 weeks</Button>
             <h6>ONLY DO THIS IF YOU ARE READY TO MOVE EVERY PROJECT TO THE NEXT STATE</h6>
-            <h6>IF A PROJECT HAS UNCLAIMED TASKS IT WILL FAIL AND YOU WILL LOSE YOUR STAKED TOKENS</h6>
+            <h6>IF A PROJECT HAS UNCLAIMED TASKS IT WILL FAIL AND YOU WILL LOSE YOUR STAKED TOKENS</h6> */ }
           </header>
           <div style={{paddingLeft: '30px', paddingRight: '30px'}}>
             {projects}
