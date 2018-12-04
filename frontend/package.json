@@ -2,7 +2,7 @@
   "name": "distribute",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://165.227.184.116/",
   "dependencies": {
     "antd": "^3.10.0",
     "apollo-boost": "^0.1.16",

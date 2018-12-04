@@ -2,7 +2,7 @@
 
 const web3Utils = require('web3-utils')
 const Web3 = require('web3')
-const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
+const web3 = new Web3(new Web3.providers.HttpProvider('http://165.227.184.116:8540'))
 
 const keccakHashes = (types, bytesarray) => {
   // {t: 'string', v: 'Hello!%'}, {t: 'int8', v:-23}, {t: 'address', v: '0x85F43D8a49eeB85d32Cf465507DD71d507100C1d'}
