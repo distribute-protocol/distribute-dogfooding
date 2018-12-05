@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { eth, web3 } from '../utilities/blockchain'
+import { eth } from '../utilities/blockchain'
 import uport from '../utilities/uport'
 import { Button } from 'antd'
 import { loginUser } from '../actions/userActions'

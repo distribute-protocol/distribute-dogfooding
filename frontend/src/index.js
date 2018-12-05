@@ -10,7 +10,7 @@ import { ConnectedRouter } from 'react-router-redux'
 
 import ApolloClient from 'apollo-boost'
 export const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql'
+  uri: 'http://165.227.184.116/graphql'
 })
 
 ReactDOM.render(

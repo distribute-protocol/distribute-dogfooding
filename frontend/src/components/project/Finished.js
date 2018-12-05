@@ -32,7 +32,6 @@ export default ({
   location,
   cost,
   reputationCost,
-  date,
   state,
   tasks,
   votes
@@ -49,11 +48,6 @@ export default ({
         reputationCost={reputationCost}
       />
       <div style={{padding: 10}}>
-        <div>
-          <div>
-            Voting Period Expires In {typeof date !== 'undefined' ? `${date.fromNow()}` : 'N/A'}
-          </div>
-        </div>
         <div style={{display: 'flex', flexDirection: 'column', backgroundColor: '#FCFCFC', marginTop: 30}}>
           <Table dataSource={tasks} columns={columns} pagination={false} />
         </div>

@@ -77,7 +77,7 @@ export default ({
       <div style={{padding: 10}}>
         <div>
           <div>
-            Task Submission Expiration: <strong> {typeof date !== 'undefined' ? `${date.fromNow()}` : 'N/A'}</strong>
+            Task Submission Expires: <strong> {typeof date !== 'undefined' ? `${date}` : 'N/A'}</strong>
           </div>
           {submission}
         </div>

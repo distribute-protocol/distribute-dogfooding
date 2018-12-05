@@ -47,7 +47,7 @@ export default ({
       <div style={{padding: 10}}>
         <div>
           <div>
-            Validate Period Expires {typeof date !== 'undefined' ? `${date.fromNow()}` : 'N/A'}
+            Validation Expires: <strong>{typeof date !== 'undefined' ? `${date}` : 'N/A'}</strong>
           </div>
         </div>
         <div style={{display: 'flex', flexDirection: 'column', backgroundColor: '#FCFCFC', marginTop: 30}}>

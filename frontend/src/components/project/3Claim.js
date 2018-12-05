@@ -53,7 +53,7 @@ export default ({
       <div style={{padding: 10}}>
         <div>
           <div>
-            Task Completion Expiration: {typeof date !== 'undefined' ? `${date.fromNow()}` : 'N/A'}
+            Task Completion Expires: <strong>{typeof date !== 'undefined' ? `${date}` : 'N/A'}</strong>
           </div>
         </div>
         <div style={{display: 'flex', flexDirection: 'column', backgroundColor: '#FCFCFC', marginTop: 30}}>

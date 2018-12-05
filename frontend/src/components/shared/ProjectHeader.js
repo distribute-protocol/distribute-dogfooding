@@ -18,7 +18,7 @@ export default ({
         <div style={{wordWrap: 'break-word'}}>Address: <strong>{`${address}`}</strong></div>
         {/* <div>State: <strong>{`${projectState}`}</strong></div> */}
         { typeof photo !== 'undefined'
-          ? <img style={{height: 200, width: 200}} src={photo} alt='projectPhoto' />
+          ? <img style={{height: 200, width: 200}} src={photo} alt='no project photo' />
           : null
         }
         <div>Summary: {`${summary}`}</div>

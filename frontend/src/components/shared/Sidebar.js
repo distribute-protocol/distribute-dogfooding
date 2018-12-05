@@ -32,11 +32,11 @@ class Sidebar extends React.Component {
   render () {
     return (
       <div style={{height: '100vh', width: 200, backgroundColor: '#111111', position: 'fixed', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-        <h1 className='App-title' style={{color: 'white', marginTop: 20}}>distribute</h1>
-        <div style={{width: 100, height: 100, borderRadius: 50, backgroundColor: '#fcfcfc', marginTop: 20}}>
+        <h1 className='App-title' style={{color: 'white', marginTop: 15}}>distribute</h1>
+        <div style={{width: 100, height: 100, borderRadius: 50, backgroundColor: '#fcfcfc', marginTop: 10}}>
           <img style={{width: 100, height: 100, borderRadius: 50}} alt='profile' src={typeof this.props.user.avatar !== 'undefined' ? this.props.user.avatar.uri : 'https://podlodka.info/components/com_jcomments/images/no_avatar.png'} />
         </div>
-        <h3 style={{color: '#FCFCFC', marginTop: 15}}>{this.props.user.name}</h3>
+        <h3 style={{color: '#FCFCFC', marginTop: 10}}>{this.props.user.name}</h3>
         <div style={{alignItems: 'flex-start', marginTop: 20}}>
           <a href='/status'><h3 className='ActionText' style={Object.assign({}, titleStyle, {textAlign: 'center'})}>Network Status</h3></a>
           {/* <a href='/projects'><h3 className='ActionText' style={{color: '#FCFCFC', marginTop: 10, fontSize: 20, fontFamily: 'helvetica'}}>Current Projects</h3></a> */}

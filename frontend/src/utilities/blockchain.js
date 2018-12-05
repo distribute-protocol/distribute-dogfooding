@@ -16,7 +16,7 @@ if (typeof web3init !== 'undefined') {
 } else {
   // set the provider you want from Web3.providers
   web3init = new Web3(window.web3.currentProvider)
-  // web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
+  // web3 = new Web3(new Web3.providers.HttpProvider('http://165.227.184.116:8540'))
 }
 // const Eth = require('ethjs')
 

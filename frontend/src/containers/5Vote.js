@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button } from 'antd'
+// import { Button } from 'antd'
 import Sidebar from '../components/shared/Sidebar'
 import Project from './project/5Vote'
-import fastforward from '../utilities/fastforward'
+// import fastforward from '../utilities/fastforward'
 import { connect } from 'react-redux'
 import { eth } from '../utilities/blockchain'
 import { getProjects } from '../actions/projectActions'
@@ -51,7 +51,7 @@ class Vote extends React.Component {
     this.state = {
       projects: []
     }
-    this.fastForward = this.fastForward.bind(this)
+    // this.fastForward = this.fastForward.bind(this)
   }
 
   componentWillMount () {
@@ -84,9 +84,9 @@ class Vote extends React.Component {
     })
   }
 
-  async fastForward () {
-    await fastforward(7 * 24 * 60 * 60)
-  }
+  // async fastForward () {
+  //   await fastforward(7 * 24 * 60 * 60)
+  // }
 
   getPrevPollID (numTokens, user) {
     let pollInfo = this.props.users[user] // get object of poll data w/pollID's as keys
@@ -123,9 +123,9 @@ class Vote extends React.Component {
         <div style={{marginLeft: 200, marginBottom: 30}}>
           <header className='App-header'>
             <h3>Vote Tasks</h3>
-            <Button type='danger' onClick={this.fastForward}>fast forward 1 week</Button>
+            { /* <Button type='danger' onClick={this.fastForward}>fast forward 1 week</Button>
             <h6>ONLY DO THIS IF YOU ARE READY TO MOVE EVERY PROJECT TO THE NEXT STATE</h6>
-            <h6>IF A PROJECT HAS UNCLAIMED TASKS IT WILL FAIL AND YOU WILL LOSE YOUR STAKED TOKENS</h6>
+            <h6>IF A PROJECT HAS UNCLAIMED TASKS IT WILL FAIL AND YOU WILL LOSE YOUR STAKED TOKENS</h6> */ }
           </header>
           <div style={{paddingLeft: '30px', paddingRight: '30px'}}>
             {projects}
