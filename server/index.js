@@ -45,7 +45,8 @@ const server = new ApolloServer({
   resolvers,
   tracing: true,
   cacheControl: true,
-  engine: false
+  engine: false,
+  cors: true
   //   // By setting this to "false", we avoid using Apollo Server 2's
   //   // integrated metric reporting and fall-back to using the Apollo
   //   // Engine Proxy (running separately) for metric collection.
