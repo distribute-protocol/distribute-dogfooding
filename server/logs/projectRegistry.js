@@ -1,5 +1,5 @@
 const Web3 = require('web3')
-const web3 = new Web3(new Web3.providers.HttpProvider('http://165.227.184.116:8540'))
+const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8540'))
 const PR = require('../../frontend/src/abi/ProjectRegistry')
 const mongoose = require('mongoose')
 const Project = require('../models/project')
