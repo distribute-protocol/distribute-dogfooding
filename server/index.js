@@ -33,6 +33,7 @@ app.use(bodyParser.urlencoded({
 }))
 
 app.use(bodyParser.json())
+app.use(cors())
 app.use(express.static(path.resolve(__dirname, '../frontend/public')))
 
 const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/distribute'
