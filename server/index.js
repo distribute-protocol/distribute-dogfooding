@@ -34,6 +34,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json())
 app.use(cors())
+app.options('*', cors())
 app.use(express.static(path.resolve(__dirname, '../frontend/public')))
 
 const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/distribute'
@@ -54,7 +55,7 @@ const server = new ApolloServer({
   //   apiKey: ENGINE_API_KEY
   // }
 })
-server.applyMiddleware({ app })
+server.applyMiddleware({ app, cors: true })
 
 // app.use('/graphql', cors(), bodyParser.json(), graphqlExpress({ schema, tracing: true, cacheControl: true }))
 //
